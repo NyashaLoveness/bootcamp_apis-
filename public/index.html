@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>API Widgets</title>
+    <script type="module" src="./bootcamp_funcs/longestWord.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+</head>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+<body>
+    <div class='cont' x-data='{
+        sentence: " ",
+        longestWord: " ",
+        shortestWord: " ",
+        sum: 0,
+        string: " ",
+        total: 0, 
+        usage: " ",
+        airtime: " ",
+        result: " ",
+
+        checkSentence(){
+            axios.get(`https://localhost:6007/api/word_game?sentence=${this.sentence}`)
+            .then((result)=>{
+                    this.longestWord = result.data.longestWord;
+                    this.shortestWord = result.data.shortestWord;
+                    this.sum = result.data.wordLengths});
+        }, 
+
+        phoneBill(){
+            axios.post(`/api/phonebill/total`, {
+                "bill": `${this.string}`
+            })
+            .then((result) => {
+                    this.total = result.data;
+                    console.log(result.data)
+                })
+            .catch((error) =>{
+                    console.log(error);
+                });
+        },
+
+        enoughAirtime(){
+            axios.post(`/api/enough`, {
+                "usage": `${this.usage}`
+                "airtime": `${this.airtime}`
+            })
+            .then((result) => {
+                    this.result = result.data;
+                    console.log(result.data)
+                })
+            .catch((error) =>{
+                    console.log(error);
+                });
+        },
+
+    }'>
+        <h1 class='header1'>Bootcamp API Widgets</h1>
+        <div class='cont1'>
+            <div class='box1'>
+                <h2 class='header2'>Word Game</h2>
+                <input class='input' type='text' placeholder='Enter sentence here' x-model='sentence'>
+                <div><button class='btn' @click='checkSentence(sentence)'>Check sentence</button></div>
+                <div class='things'>Sentence entered:
+                    <span x-text='sentence'></span>
+                </div>
+                <div class='things'>
+                    Longest word: <span x-text='longestWord'></span>
+                </div>
+                <div class='things'>
+                    Shortest word: <span x-text='shortestWord'></span>
+                </div>
+                <div class='things'>
+                    Character sum: <span x-text='sum'></span>
+                </div>
+            </div>
+        </div>
+
+        <div class='cont2'>
+            <div class='box2'>
+                <h2 class='header2'>Total Phone Bill</h2>
+                <input class='input' type='text' placeholder="Enter string here" x-model='string'>
+                <div><button class='btn' @click='phoneBill()'>Total</button></div>
+                <div class='things'>Total:
+                    <span x-text='total'></span>
+                </div>
+            </div>
+        </div>
+
+        <div class='cont3'>
+            <div class='box3'>
+                <h2 class='header2'>Enough Airtime</h2>
+                <div class='things'>Usage:</div>
+                <input class='input' type='text' placeholder="Enter usage here" x-model='usage'>
+
+                <div class='things'> Airtime available:</div>
+                <input class='input' type='text' placeholder="Enter airtime here" x-model='airtime'>
+                <div><button class='btn' @click='enoughAir()'>Calculate</button></div>
+                <div class="things" x-text='result'></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

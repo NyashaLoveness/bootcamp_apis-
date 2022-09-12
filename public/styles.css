@@ -1,0 +1,60 @@
+.cont{
+    background-color: bisque;
+}
+
+.header1{
+    text-align: center;
+    font-size: 3.5em;
+}
+
+.header2{
+    text-align: center;
+}
+
+.input{
+    width: 10.5em;
+    height: 2em;
+    border: 0.5em 2px solid;
+    border-color: gray;
+    margin-bottom: 0.5em;
+    margin-left: 28em;
+}
+
+.things{
+    padding-bottom: 0.4em;
+    margin-left: 21em;
+    font-size: 1em;
+}
+
+.btn{
+    height: 2.7em;
+    width: 8em;
+    background-color: rgb(190, 185, 185);
+    margin-left: 28em;
+    border-radius: 1em;
+    margin-bottom: 0.8em;
+    margin-top: 0.8em;
+}
+
+.cont1, .cont2, .cont3{
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 3em;
+    border: 0.2em solid;
+    border-color: gray;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+.cont1{
+    background-color: lightblue;
+}
+
+.cont2{
+    background-color: lightpink;
+}
+
+.cont3{
+    background-color: rgb(169, 247, 138);
+}
