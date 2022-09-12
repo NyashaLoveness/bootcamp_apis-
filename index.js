@@ -14,11 +14,11 @@ app.use(express.static('public'))
 app.get('https://localhost:6007/api/word_game', function (req, res) {
     const sentence = req.query.sentence;
 
-    if (!sentence) {
-        res.json({
-            error: 'Sentence not found!'
-        })
-    }
+    // if (!sentence) {
+    //     res.json({
+    //         error: 'Sentence not found!'
+    //     })
+    // }
 
     res.json({
         'longestWord': longestWord(sentence),
